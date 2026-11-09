@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Task Tracker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand"><span class="brand-mark">ST</span><span>StudyBoard</span></div>
+      <p class="side-label">MENU</p>
+      <button class="nav-link active" id="dashboardNav">▦ <span>Dashboard</span></button>
+      <button class="nav-link" id="allTasksNav">☷ <span>All Tasks</span></button>
+      <div class="sidebar-note">
+        <div class="note-icon">✦</div>
+        <strong>Stay on track!</strong>
+        <p>Small steps every day lead to big results.</p>
+      </div>
+      <div class="profile"><div class="avatar">S</div><div><strong>Student</strong><small>My workspace</small></div></div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div><p class="eyebrow">STUDENT WORKSPACE</p><h1>My Dashboard</h1></div>
+        <button class="primary-btn" id="addTaskTop">＋ Add New Task</button>
+      </header>
+
+      <section class="welcome">
+        <div><p class="eyebrow light">YOUR PERSONAL TASK MANAGER</p><h2>Keep learning. Keep growing.</h2><p>Organize your schoolwork and keep track of every deadline.</p></div>
+        <div class="welcome-art">✎</div>
+      </section>
+
+      <section class="stats">
+        <article class="stat-card"><div class="stat-icon purple">☷</div><div><span>Total Tasks</span><strong id="totalCount">0</strong></div></article>
+        <article class="stat-card"><div class="stat-icon orange">◷</div><div><span>Pending</span><strong id="pendingCount">0</strong></div></article>
+        <article class="stat-card"><div class="stat-icon green">✓</div><div><span>Completed</span><strong id="completedCount">0</strong></div></article>
+        <article class="stat-card"><div class="stat-icon blue">▣</div><div><span>Due Today</span><strong id="todayCount">0</strong></div></article>
+      </section>
+
+      <section class="tasks-panel">
+        <div class="panel-heading"><div><p class="eyebrow">STAY ORGANIZED</p><h2 id="listTitle">Your Tasks</h2></div><button class="secondary-btn" id="addTaskBtn">＋ Add Task</button></div>
+        <div class="toolbar">
+          <label class="search">⌕ <input id="searchInput" type="search" placeholder="Search tasks..."></label>
+          <select id="statusFilter" aria-label="Filter by status"><option value="all">All Status</option><option value="pending">Pending</option><option value="in-progress">In Progress</option><option value="completed">Completed</option></select>
+          <select id="priorityFilter" aria-label="Filter by priority"><option value="all">All Priorities</option><option value="High">High</option><option value="Medium">Medium</option><option value="Low">Low</option></select>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>TASK</th><th>SUBJECT</th><th>DUE DATE</th><th>PRIORITY</th><th>STATUS</th><th>ACTIONS</th></tr></thead>
+            <tbody id="taskTable"><tr><td colspan="6" class="empty">Loading your tasks...</td></tr></tbody>
+          </table>
+        </div>
+        <p class="table-foot" id="taskSummary">Showing 0 tasks</p>
+      </section>
+      <footer>StudyBoard · Student Task Tracker</footer>
+    </main>
+  </div>
+
+  <div class="modal-backdrop" id="taskModal" hidden>
+    <form class="modal" id="taskForm">
+      <div class="modal-head"><div><p class="eyebrow">TASK DETAILS</p><h2 id="modalTitle">Add New Task</h2></div><button type="button" class="close-btn" id="closeModal">×</button></div>
+      <label>Task title<input id="taskTitle" maxlength="120" required placeholder="e.g. Complete programming activity"></label>
+      <label>Subject<input id="taskSubject" maxlength="80" required placeholder="e.g. Programming 2"></label>
+      <div class="form-row">
+        <label>Due date<input id="taskDue" type="date" required></label>
+        <label>Priority<select id="taskPriority"><option>Medium</option><option>High</option><option>Low</option></select></label>
+      </div>
+      <label>Status<select id="taskStatus"><option value="pending">Pending</option><option value="in-progress">In Progress</option><option value="completed">Completed</option></select></label>
+      <p class="form-error" id="formError"></p>
+      <div class="modal-actions"><button type="button" class="secondary-btn" id="cancelModal">Cancel</button><button type="submit" class="primary-btn" id="saveTaskBtn">Save Task</button></div>
+    </form>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
